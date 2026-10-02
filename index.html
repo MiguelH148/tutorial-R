@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Miguel Angel Hurtado Rubiano">
+
+<title>when haces tus momos en tutoriales de R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-12757e4b7af482b2d9c5bd8860d2b707.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap-5a1fdbd121e06a8939f6619ad9c17f3c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #FFB800;
+      }
+</style>
+
+
+</head>
+
+<body class="quarto-light">
+
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">when haces tus momos en tutoriales de R</h1>
+            <p class="subtitle lead">El futuro es hoy, oiste dagoberto</p>
+                      </div>
+  </div>
+    
+  <div class="quarto-title-meta-author column-page-left">
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-heading">Afiliación</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">Miguel Angel Hurtado Rubiano </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+              Nunca te renunciaré
+              </a>
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta column-page-left">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Fecha de publicación</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">2 de octubre de 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> introducción</a></li>
+  <li><a href="#crear-el-proyecto-normal-en-r-quarto" id="toc-crear-el-proyecto-normal-en-r-quarto" class="nav-link" data-scroll-target="#crear-el-proyecto-normal-en-r-quarto"><span class="header-section-number">2</span> crear el proyecto normal en R Quarto</a></li>
+  <li><a href="#paquetes" id="toc-paquetes" class="nav-link" data-scroll-target="#paquetes"><span class="header-section-number">3</span> paquetes</a></li>
+  <li><a href="#repositorio" id="toc-repositorio" class="nav-link" data-scroll-target="#repositorio"><span class="header-section-number">4</span> repositorio</a></li>
+  <li><a href="#subir-al-repositorio" id="toc-subir-al-repositorio" class="nav-link" data-scroll-target="#subir-al-repositorio"><span class="header-section-number">5</span> subir al repositorio</a></li>
+  <li><a href="#los-verdaderos-últimos-pasos" id="toc-los-verdaderos-últimos-pasos" class="nav-link" data-scroll-target="#los-verdaderos-últimos-pasos"><span class="header-section-number">6</span> los verdaderos últimos pasos</a></li>
+  <li><a href="#celebrar" id="toc-celebrar" class="nav-link" data-scroll-target="#celebrar"><span class="header-section-number">7</span> celebrar</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<div style="position:absolute; top:10px; right:10px;">
+<img src="Logo_ut.png" width="150">
+</div>
+<style>
+body{
+  background-color:#f7f6ed;
+  font-size:130%;
+  text-align:justify;
+}
+</style>
+<section id="introducción" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> introducción</h1>
+<p>En el dia de hoy vamos a hacer un tutorial paso a paso de como subir tu página a un repositorio de github, gracias a los problemas que he visto que surgieron. <br></p>
+</section>
+<section id="crear-el-proyecto-normal-en-r-quarto" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> crear el proyecto normal en R Quarto</h1>
+<p>primero haremos todo lo que tengamos que hacer en el documento de quarto, poner o quitar información, eso depende de que es lo que ustedes quieran mostrar. Después lo guardamos como index (muy importante)</p>
+</section>
+<section id="paquetes" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> paquetes</h1>
+<p>cuando ya esté terminado el Quarto y lo hayamos guardado vamos a ir a ese icono debajo de files <br> <br> <img src="el%20icono%20este.png" class="img-fluid" alt="el icono este"> <br> <br> y creamos un R Script (o podemos oprimir ctrl + shift + N en el teclado)</p>
+<p>En el R Script lo primero que vamos a hacer es escribir <span style="color: red;">install.packages(“usethis”)</span> (las comillas son importantes) esto se hace para instalar los paquetes necesarios para subir esto a git. Después le damos a “Run” o podemos oprimir ctrl + enter para que se instalen los paquetes</p>
+<p><br></p>
+<p>lo segundo que haremos es escribir <span style="color: red;">library(usethis)</span> (importante que sea sin comillas) esto para activar dichos paquetes. Lo mismo de Run o ctrl + enter</p>
+<p><br></p>
+<p>después escribiremos <span style="color: red;">use_git()</span> y otra vez, Run Después de runnear (darle run) les aparecerá 3 opciones, 2 negativas y una postivia, le darán a la positiva y esperán</p>
+<p><br></p>
+<p>después <span style="color: red;">use_github()</span> y otra vez Run, aquí ya debió haber creado el repositorio y les abrirá automáticamente el navegador</p>
+<p>debería quedar de esta manera: <br> <br></p>
+<p><img src="así%20deberia%20quedar.png" class="img-fluid"></p>
+</section>
+<section id="repositorio" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> repositorio</h1>
+<p>aquí el repositorio estará creado, pero no servirá para nada por ahora, primero lo que haremos será escribir en el script <span style="color: red;">use_github_pages()</span> y le dan a run. Esto creará otra rama (o branch) aparte de la llamada “masters”.</p>
+<p>El problema es que esta rama no tiene nada… y si esta rama no tiene nada no podemos desplegar la página, entonces ¿cómo podemos hacer que si tenga algo?</p>
+<p>En la página del github, le daremos a settings <br> <img src="settings.png" class="img-fluid"> <br> después a actions <br> <img src="actions.png" class="img-fluid"> <br> después a general <br> <img src="general.png" class="img-fluid"> <br> bajamos hasta donde dice workflows permisions y seleccionamos la primera opción <br> <img src="workflows.png" class="img-fluid"> Después volvemos al R y creamos unas cuantas carpetas (le damos a files y new folder) <img src="new%20folder.png" class="img-fluid"> la primera carpeta se llamará <span style="color: red;">.github</span></p>
+<p><br> la segunda carpeta se llamará <span style="color: red;">workflows</span></p>
+<p>y lo tercero no será una carpeta, será un archivo de texto, osea que le daremos al que está al lado de new folder, osea <span style="color: red;">new file</span> y seleccionarmeos <span style="color: red;">text file</span> <br> <img src="text%20files.png" class="img-fluid"> <br></p>
+<p>este archivo lo tienen que llamara como <span style="color: red;">deploy-gh-pages.yml</span></p>
+<p><br></p>
+<p>se les abrirá un archivo de texto en blanco, en ese archivo de texto lo que tienen que hacer es copiar y pergar lo que aparece en el siguiente link: <br> <a href="https://gist.githubusercontent.com/irwingss/c7993e545654740ef21df3ccba9b2add/raw/aa71e4739f874f537145b6ae39cbdb90cec386fc/gistfile1.txt" class="uri">https://gist.githubusercontent.com/irwingss/c7993e545654740ef21df3ccba9b2add/raw/aa71e4739f874f537145b6ae39cbdb90cec386fc/gistfile1.txt</a> <br> renderizan y guardan el archivo de texto</p>
+</section>
+<section id="subir-al-repositorio" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> subir al repositorio</h1>
+<p>ahora vamos con la “ultima parte” en la cual tendremos que ir a <span style="color: red;">terminal</span> <br> <img src="terminal.png" class="img-fluid"> y aquí tenemos que escribir las siguientes 3 cosas:</p>
+<p><span style="color: red;">1. git add .</span> <br> <span style="color: red;">2. git commit -m “añadiendo cambios y yml”</span> nota: lo que está entre las comillas es solo un mensaje, no necesariamente tiene que ser ese, con tal de que esté en comillas todo bien (ya lo intenté) <br> <span style="color: red;">3. git push</span></p>
+<p>es importante que recuerden bien los espacios y signos o si no no funcionará</p>
+<p><span style="color: red;">NOTA IMPORTANTE:</span> para hacer todo esto primero debieron haber hecho lo de iniciar sesión en github, hacer lo del gitbash (o la aplicación que dejaré como imagen abajo) y crear el token (no lo creía necesario pero parece que si lo es, al menos la primera vez que se hace) <br> <br> <img src="gitbash.png" class="img-fluid" alt="icono de la aplicación gitbash"> <br> <br></p>
+</section>
+<section id="los-verdaderos-últimos-pasos" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> los verdaderos últimos pasos</h1>
+<p>cuando hayamos hecho todo eso nos vamos al repositorio y volvemos a cargar la página hasta que el simbolo que señalaré tenga un chulo <br> <br> <img src="simbolo.png" class="img-fluid"> <br> <br></p>
+<p>después de que ya esté ese simbolo vamos a volver a ir a settings <br> <br> <img src="settings.png" class="img-fluid"> <br> <br> pero ahora bajamos hasta donde dice pages <br> <br> <img src="pages.png" class="img-fluid"> y como podemos observar hay un lugar donde dice “none” (lo que está encerrado en verde) le damos ahí, y vemos 3 opciones, seleccionamos la que dice “gh-pages” y después le damos a “save”</p>
+<p><br> <img src="branch.png" class="img-fluid"></p>
+<p><br></p>
+<p>después vamos de nuevo a “code” <br> <br> <img src="code.png" class="img-fluid"> y ahí le damos a voler a cargar hasta que en la parte donde dice deployments (o lo que está encerrado en su defecto) diga <span style="color: red;">now</span> (en lugar de “2 weeks ago en mi caso” <br> <br> <img src="now.png" class="img-fluid"></p>
+</section>
+<section id="celebrar" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> celebrar</h1>
+<p>y listo, en teoría ya debería estar… si no les funciona preguntenle a Santiago como es su método, sin más que decir, me despido</p>
+<p>chao</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="index_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
